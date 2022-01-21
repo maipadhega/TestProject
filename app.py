@@ -1,11 +1,10 @@
 from flask import Flask
 app = Flask(__name__)
-
+import workwithqueues
 @app.route("/")
 def hello():
-   
-    stream = open("workwithqueues.py")
-    read_file = stream.read()
-    return exec(read_file)
+
+    workwithqueues.createQueue()
+    return "created queue successfully"
 
 
