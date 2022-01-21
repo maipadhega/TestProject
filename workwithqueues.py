@@ -4,11 +4,12 @@ from azure.storage.queue import (
         BinaryBase64DecodePolicy
 )
 
-import os, uuid
+import os
+import uuid
 # Retrieve the connection string from an environment
 # variable named AZURE_STORAGE_CONNECTION_STRING
 connect_str = os.getenv("AZURE_STORAGE_CONNECTION_STRING")
-
+connect_str = "DefaultEndpointsProtocol=https;AccountName=firststoragebyvivek;AccountKey=JFJ+CHFS/n8z0l+qZos18frwFbm2k2rdRtFuSJ3fF03TTdX3yriEHotDpdyrR+fSRBjO5MzNzzlK5ig6BeWatQ=="
 # Create a unique name for the queue
 q_name = "queue-" + str(uuid.uuid4())
 
@@ -23,8 +24,8 @@ queue_client.create_queue()
 # Setup Base64 encoding and decoding functions
 base64_queue_client = QueueClient.from_connection_string(
                             conn_str=connect_str, queue_name=q_name,
-                            message_encode_policy = BinaryBase64EncodePolicy(),
-                            message_decode_policy = BinaryBase64DecodePolicy()
+                            message_encode_policy=BinaryBase64EncodePolicy(),
+                            message_decode_policy=BinaryBase64DecodePolicy()
                         )
 message = u"Hello World"
 print("Adding message: " + message)
