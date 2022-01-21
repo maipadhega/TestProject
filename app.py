@@ -3,6 +3,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    file = open('workwithqueues.py', 'r').read()
-    return exec(file)
    
+    stream = open("workwithqueues.py")
+    read_file = stream.read()
+    return exec(read_file)
+
+
